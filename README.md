@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/amtgroup/squash-tm-plugins.svg?branch=master)](https://travis-ci.com/amtgroup/squash-tm-plugins)
+
 # squash-tm-plugins
 This repository provides a set of plugins developed and used by AMT GROUP for Squash TM.
 
