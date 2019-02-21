@@ -34,11 +34,17 @@
 
 
     <modules>
+        <module>plugin.authentication.ldap</module>
     </modules>
 
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <squash-tm.version>1.18.5.RELEASE</squash-tm.version>
+
+        <!-- Spring Boot version 1.4.7.RELEASE implies Spring Sec version 4.1.4.RELEASE -->
+        <spring-security.version>4.1.4.RELEASE</spring-security.version>
     </properties>
 
 
@@ -67,6 +73,23 @@
                 <groupId>org.squashtest.tm</groupId>
                 <artifactId>core.api</artifactId>
                 <version>${squash-tm.version}</version>
+            </dependency>
+
+            <!-- Spring Security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-ldap</artifactId>
+                <version>${spring-security.version}</version>
             </dependency>
 
         </dependencies>

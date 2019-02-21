@@ -10,6 +10,7 @@ Thumbs.db
 
 # maven
 target/
+pom.xml.bak
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
