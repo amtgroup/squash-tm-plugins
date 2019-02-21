@@ -1,0 +1,27 @@
+language: java
+jdk: openjdk8
+sudo: false
+
+cache:
+  directories:
+    - .autoconf
+    - $HOME/.m2
+
+script:
+  - mvn -B clean install
+
+deploy:
+  provider: releases
+  api_key:
+    secure: qRcCk3JM3YscJDkdUjnz9f/mhsmH1rMCqYHXbpMbYfYM+JtloAsc8MuDjwjoITWxSEQLgbS3nhgNRBQTHLf/6yoaxg5rtYLc8ocSsEXEO5wsOyCcCh1kO2CyUiBdC3EqcqyclLYMIHjUOjqJY3JtumtZw2lDkHofMqD2KoIO0LBK/Touvt+GraxjLxucAbwcwuPYkh/YkPapniA8cKNd1v9PU+VzqjszR+fJzlke9FSoDfnq5gliQolrTsi/KHUeMyfKr2n1G0qPkjGFKTWtfiYZvY5Yf0i9a7nmwqWFfIw6ZYgORvuOTFjfC2/Cq7gS0Dop8y7yUbaHgMgWiC3XsYxyZAi4XR1wiaafvz6nC9caxLI0zcl4xCr3n4yrBzb3/I4QqO/PKQQiVl7WkEm0MwUbS6fIkj2mHLddZImk0DsY70aC3dBfJVILOHThQoDumiBIjw4memr2ZhWHLShKCcbiS8Dm3hO2CJIHMnasD2HEV0VgtrFhk+PqU/ETmBKruB6cs3WMWsjQyPGYVACBCqUNyIfBt27jxc2lhcXQZqGfnKfsm6ga6B/uF+EHVV2KmJ/sVnD+ZgggwSelDBNku3ZPePMjBVoxdeaVj8Slq8PIOeuvgjyYqwY3paEERMMQPCEZdGZLyzIzhfFhnYOE//zu9j3sdsZv2qBkcy3VJ9o=
+  skip_cleanup: true
+  file_glob: true
+  file:
+    - "**/target/*.jar"
+  on:
+    tags: true
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
