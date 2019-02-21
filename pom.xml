@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.squashtest.tm</groupId>
+        <artifactId>squash-tm</artifactId>
+        <version>1.18.5.RELEASE</version>
+    </parent>
+    <groupId>amt.github.squashtest.tm.plugins</groupId>
+    <artifactId>squash-tm-plugins</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>squash-tm-plugins</name>
+    <description>This is a parent module for building Squash TM plugins</description>
+
+
+    <url>https://github.com/amtgroup/squash-tm-plugins</url>
+    <licenses>
+        <license>
+            <name>GNU General Public License, version 3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/amtgroup/squash-tm-plugins</url>
+        <connection>scm:git:git@github.com:amtgroup/squash-tm-plugins.git</connection>
+        <developerConnection>scm:git:git@github.com:amtgroup/squash-tm-plugins.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/amtgroup/squash-tm-plugins/issues</url>
+    </issueManagement>
+
+
+    <modules>
+    </modules>
+
+
+    <properties>
+        <squash-tm.version>1.18.5.RELEASE</squash-tm.version>
+    </properties>
+
+
+    <repositories>
+        <repository>
+            <id>squashtest.org-releases</id>
+            <url>http://repo.squashtest.org/maven2/release/</url>
+        </repository>
+    </repositories>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Squash TM BOM -->
+            <dependency>
+                <groupId>org.squashtest.tm</groupId>
+                <artifactId>squash-tm-bom</artifactId>
+                <version>${squash-tm.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Squash TM API-->
+            <dependency>
+                <groupId>org.squashtest.tm</groupId>
+                <artifactId>core.api</artifactId>
+                <version>${squash-tm.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
