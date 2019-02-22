@@ -6,6 +6,10 @@ This repository provides a set of plugins developed and used by AMT GROUP for Sq
 
 Please visit https://www.squashtest.org/ for more details about Squash Test Management.
 
+# Compatibility
+This set of plugins is compatible with the 4.18.x branch of Squash TM.
+
+
 # plugin.authentication.ldap
 ## Installation
 Copy `plugin.authentication-<version>.jar`to `<squash-tm>/plugins` directory
