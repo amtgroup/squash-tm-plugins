@@ -38,3 +38,25 @@ There are actually 2 ways how a system can determine user's full name - the actu
 Squash TM before version 1.19.0 does not include Spring LDAP dependencies. For this plugin to work,
 plugin jar includes all the classes from `spring-security-ldap` and `spring-ldap-core`
 (using `maven-dependency-plugin`'s `unpack-dependencies`).
+
+
+# Development
+## Performing a release
+1. Set a release version (remove SNAPSHOT suffix):
+    ```bash
+    mvn versions:set@release
+    ```
+1. Commit, tag and push a release:
+    ```bash
+    mvn scm:checkin scm:tag
+    ```
+## Prepare next development version
+1. Set a snapshot version:
+    ```bash
+    mvn versions:set@snapshot
+    ```
+    Optionally, you can run `mvn versions:set -DnewVersion=<version>` to pass a specific version string.
+1. Commit and push a snapshot:
+    ```bash
+    mvn scm:checkin
+    ```

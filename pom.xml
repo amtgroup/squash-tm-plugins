@@ -99,6 +99,44 @@
     <build>
         <plugins>
 
+            <!-- Release management -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>release</id>
+                        <goals>
+                            <goal>set</goal>
+                        </goals>
+                        <configuration>
+                            <generateBackupPoms>false</generateBackupPoms>
+                            <removeSnapshot>true</removeSnapshot>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>snapshot</id>
+                        <goals>
+                            <goal>set</goal>
+                        </goals>
+                        <configuration>
+                            <generateBackupPoms>false</generateBackupPoms>
+                            <nextSnapshot>true</nextSnapshot>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.11.1</version>
+                <configuration>
+                    <message>chore(release): Version ${project.version}.</message>
+                    <tag>v${project.version}</tag>
+                </configuration>
+            </plugin>
+
             <!-- Disable maven-sortpom-plugin -->
             <plugin>
                 <groupId>com.google.code.sortpom</groupId>
