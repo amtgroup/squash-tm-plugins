@@ -17,6 +17,10 @@
             <groupId>org.squashtest.tm</groupId>
             <artifactId>core.api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.squashtest.tm</groupId>
+            <artifactId>tm.service</artifactId>
+        </dependency>
 
         <!-- Spring Security LDAP -->
         <dependency>

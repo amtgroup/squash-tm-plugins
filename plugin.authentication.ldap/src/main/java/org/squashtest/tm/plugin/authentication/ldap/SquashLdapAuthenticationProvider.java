@@ -11,7 +11,7 @@ import org.squashtest.tm.api.security.authentication.FeaturesAwareAuthentication
 /**
  * @author Vitaly Ogoltsov &lt;vitaly.ogoltsov@me.com&gt;
  */
-public class SquashLdapAuthenticationProvider extends LdapAuthenticationProvider implements AuthenticationProviderFeatures {
+class SquashLdapAuthenticationProvider extends LdapAuthenticationProvider implements AuthenticationProviderFeatures {
 
     SquashLdapAuthenticationProvider(LdapAuthenticator authenticator) {
         super(authenticator);

@@ -6,14 +6,17 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.ldap.authentication.BindAuthenticator;
+import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
 import org.springframework.security.ldap.authentication.LdapAuthenticator;
 import org.springframework.security.ldap.search.FilterBasedLdapUserSearch;
 import org.squashtest.tm.api.security.authentication.AuthenticationProviderFeatures;
+import org.squashtest.tm.service.internal.security.SquashUserDetailsManager;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -73,8 +76,10 @@ public class SquashLdapAuthenticationConfiguration {
     }
 
     @Bean
-    public AuthenticationProvider squashLdapAuthenticationProvider(LdapAuthenticator squashLdapAuthenticator) {
-        return new SquashLdapAuthenticationProvider(squashLdapAuthenticator);
+    public AuthenticationProvider squashLdapAuthenticationProvider(LdapAuthenticator squashLdapAuthenticator, SquashUserDetailsManager squashUserDetailsManager) {
+        LdapAuthenticationProvider squashLdapAuthenticationProvider = new SquashLdapAuthenticationProvider(squashLdapAuthenticator);
+        squashLdapAuthenticationProvider.setUserDetailsContextMapper(new SquashLdapUserDetailsMapper(squashUserDetailsManager));
+        return squashLdapAuthenticationProvider;
     }
 
     @Bean
@@ -83,7 +88,11 @@ public class SquashLdapAuthenticationConfiguration {
     }
 
 
+    /**
+     * @see org.squashtest.tm.service.SecurityConfig.InternalAuthenticationConfig
+     */
     @Configuration
+    @Order(0) // WebSecurityConfigurerAdapter default order is 100, we need to init this before
     public static class SpringSecurityConfigurer extends GlobalAuthenticationConfigurerAdapter {
 
         private final AuthenticationProvider squashLdapAuthenticationProvider;
@@ -95,7 +104,7 @@ public class SquashLdapAuthenticationConfiguration {
 
 
         @Override
-        public void configure(AuthenticationManagerBuilder auth) {
+        public void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth.authenticationProvider(squashLdapAuthenticationProvider);
         }
     }

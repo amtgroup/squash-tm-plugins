@@ -74,6 +74,11 @@
                 <artifactId>core.api</artifactId>
                 <version>${squash-tm.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.squashtest.tm</groupId>
+                <artifactId>tm.service</artifactId>
+                <version>${squash-tm.version}</version>
+            </dependency>
 
             <!-- Spring Security -->
             <dependency>
