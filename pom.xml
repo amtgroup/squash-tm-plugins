@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.squashtest.tm</groupId>
         <artifactId>squash-tm</artifactId>
-        <version>1.18.5.RELEASE</version>
+        <version>1.21.1.RELEASE</version>
     </parent>
     <groupId>amt.github.squashtest.tm.plugins</groupId>
     <artifactId>squash-tm-plugins</artifactId>
@@ -41,10 +41,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <squash-tm.version>1.18.5.RELEASE</squash-tm.version>
+        <squash-tm.version>1.21.1.RELEASE</squash-tm.version>
 
-        <!-- Spring Boot version 1.4.7.RELEASE implies Spring Sec version 4.1.4.RELEASE -->
-        <spring-security.version>4.1.4.RELEASE</spring-security.version>
+        <!-- Spring Boot version 2.1.6.RELEASE uses Spring Security 5.1.5.RELEASE -->
+        <spring-security.version>5.1.5.RELEASE</spring-security.version>
     </properties>
 
 
@@ -78,6 +78,15 @@
                 <groupId>org.squashtest.tm</groupId>
                 <artifactId>tm.service</artifactId>
                 <version>${squash-tm.version}</version>
+            </dependency>
+
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <!-- Spring Security -->

@@ -10,7 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
+import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.ldap.authentication.BindAuthenticator;
 import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
 import org.springframework.security.ldap.authentication.LdapAuthenticator;
@@ -25,7 +25,7 @@ import java.util.Optional;
  * @author Vitaly Ogoltsov &lt;vitaly.ogoltsov@me.com&gt;
  */
 @Configuration
-@ConditionalOnProperty(value = "authentication.provider", havingValue = "ldap")
+@ConditionalOnProperty(value = "authentication.ldap.enabled", havingValue = "true")
 @EnableConfigurationProperties(SquashLdapAuthenticationConfigurationProperties.class)
 public class SquashLdapAuthenticationConfiguration {
 
